@@ -11,13 +11,11 @@ void WiFiNTPTask(void *ptParam)
     TickType_t xLastWakeTime = xTaskGetTickCount();
     const TickType_t xFrequency = 1000 / portTICK_PERIOD_MS;
 
-    Serial.begin(9600);
     WiFi.begin(ssid, password);
 
     while (WiFi.status() != WL_CONNECTED)
     {
         vTaskDelay(500 / portTICK_PERIOD_MS);
-        Serial.print(".");
     }
 
     timeClient.begin();
